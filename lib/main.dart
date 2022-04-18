@@ -1,17 +1,24 @@
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(
+    const MaterialApp(
+      home: MainPage(),
+    ),
+  );
 }
 
-class MyApp extends StatefulWidget {
-  const MyApp({Key? key}) : super(key: key);
+class MainPage extends StatefulWidget {
+  const MainPage({Key? key}) : super(key: key);
 
   @override
-  State<MyApp> createState() => _MyAppState();
+  State<MainPage> createState() => _MainPageState();
 }
 
-class _MyAppState extends State<MyApp> {
+class _MainPageState extends State<MainPage> {
+  double getData(BuildContext context) => MediaQuery.of(context).size.height;
+  double getDataWidth(BuildContext context) =>
+      MediaQuery.of(context).size.width;
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -29,29 +36,31 @@ class _MyAppState extends State<MyApp> {
             ),
           ),
         ),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            Center(child: Icon(Icons.thumb_up, size: 50, color: Colors.white)),
-            Center(
-                child: Text(
-              'Fatmore App',
-              style: TextStyle(
-                fontSize: 20,
-                color: Colors.white,
-              ),
-            )),
-          ],
+        Container(
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              Center(
+                  child: Icon(Icons.thumb_up, size: 50, color: Colors.white)),
+              Center(
+                  child: Text(
+                "Fatamore App",
+                style: TextStyle(
+                  fontSize: 20,
+                  color: Colors.white,
+                ),
+              )),
+            ],
+          ),
         ),
-        Column(
-          children: <Widget>[
-            Image(
+        Positioned(
+            right: -getData(context) * 0.4,
+            bottom: -getDataWidth(context) * 0.1,
+            child: Image(
                 image: AssetImage('asset/image-bg1.png'),
-                width: 200,
-                height: 200),
-          ],
-        ),
+                width: getData(context),
+                height: getDataWidth(context) * 0.6)),
       ])),
     );
   }
