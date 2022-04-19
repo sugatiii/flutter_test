@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:app/login_page.dart';
 
-class LoginPage extends StatelessWidget {
-  const LoginPage({Key? key}) : super(key: key);
+class StartPage extends StatelessWidget {
+  const StartPage({Key? key}) : super(key: key);
   double getDataSmall(BuildContext context) =>
       MediaQuery.of(context).size.width * 2 / 3;
   double getDataBig(BuildContext context) =>
       MediaQuery.of(context).size.width * 7 / 8;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -76,7 +78,7 @@ class LoginPage extends StatelessWidget {
                   },
                   child: Center(
                     child: Text(
-                      "Login Page",
+                      "GET STARTED",
                       style: TextStyle(
                           fontFamily: "Pacifico",
                           fontSize: 13,
