@@ -1,4 +1,3 @@
-import 'package:app/login_page.dart';
 import 'package:app/start_page.dart';
 import 'package:flutter/material.dart';
 
