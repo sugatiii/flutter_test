@@ -1,19 +1,15 @@
-import 'package:app/menu_page.dart';
-import 'package:app/signup_page.dart';
+import 'package:app/login_page.dart';
 import 'package:app/start_page.dart';
 import 'package:flutter/material.dart';
 
-class LoginPage extends StatelessWidget {
-  const LoginPage({Key? key}) : super(key: key);
+class SignupPage extends StatelessWidget {
+  const SignupPage({Key? key}) : super(key: key);
   double getDataSmall(BuildContext context) =>
       MediaQuery.of(context).size.width * 2 / 3;
   double getDataBig(BuildContext context) =>
       MediaQuery.of(context).size.width * 7 / 8;
-
   @override
   Widget build(BuildContext context) {
-    var txtEditEmail = TextEditingController();
-    var txtEditPassword = TextEditingController();
     return Scaffold(
       backgroundColor: Colors.white,
       body: Stack(
@@ -76,7 +72,7 @@ class LoginPage extends StatelessWidget {
                     borderRadius: BorderRadius.circular(5),
                   ),
                   margin: EdgeInsets.only(
-                      top: MediaQuery.of(context).size.height / 2.5,
+                      top: MediaQuery.of(context).size.height / 2.9,
                       left: 10,
                       right: 10,
                       bottom: 20),
@@ -89,18 +85,25 @@ class LoginPage extends StatelessWidget {
                   child: Column(
                     children: <Widget>[
                       TextField(
-                        controller: txtEditEmail,
+                        decoration: InputDecoration(
+                          icon: Icon(Icons.person,
+                              color: Color.fromARGB(255, 252, 100, 133)),
+                          labelText: 'Username',
+                          labelStyle: TextStyle(
+                              color: Color.fromARGB(255, 252, 100, 133)),
+                        ),
+                      ),
+                      TextField(
                         decoration: InputDecoration(
                           icon: Icon(Icons.email,
                               color: Color.fromARGB(255, 252, 100, 133)),
-                          labelText: 'email',
+                          labelText: 'Email',
                           labelStyle: TextStyle(
                               color: Color.fromARGB(255, 252, 100, 133)),
                         ),
                       ),
                       TextField(
                         //password
-                        controller: txtEditPassword,
                         obscureText: true,
                         decoration: InputDecoration(
                           icon: Icon(Icons.lock,
@@ -110,23 +113,20 @@ class LoginPage extends StatelessWidget {
                               color: Color.fromARGB(255, 252, 100, 133)),
                         ),
                       ),
+                      TextField(
+                        //password
+                        obscureText: true,
+                        decoration: InputDecoration(
+                          icon: Icon(Icons.lock,
+                              color: Color.fromARGB(255, 252, 100, 133)),
+                          labelText: 'Confirm Password',
+                          labelStyle: TextStyle(
+                              color: Color.fromARGB(255, 252, 100, 133)),
+                        ),
+                      ),
                     ],
                   ),
                 ),
-                Container(
-                    margin: EdgeInsets.all(10),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.end,
-                      children: <Widget>[
-                        Container(
-                          child: Text(
-                            'Forgot Password?',
-                            style: TextStyle(
-                                color: Color.fromARGB(255, 252, 100, 133)),
-                          ),
-                        ),
-                      ],
-                    )),
                 Container(
                     margin: EdgeInsets.only(
                       top: 10,
@@ -135,7 +135,7 @@ class LoginPage extends StatelessWidget {
                       left: 30,
                     ),
                     child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      mainAxisAlignment: MainAxisAlignment.end,
                       children: <Widget>[
                         Container(
                             child: SizedBox(
@@ -151,18 +151,22 @@ class LoginPage extends StatelessWidget {
                                       splashColor:
                                           Color.fromARGB(255, 252, 100, 133),
                                       onTap: () {
-                                        Navigator.pushReplacement(
-                                            context,
-                                            MaterialPageRoute(
-                                                builder: (context) =>
-                                                    MenuPage()));
+                                        Navigator.pop(context);
                                       },
                                       child: Center(
-                                        child: Text(
-                                          'Sign In',
-                                          style: TextStyle(
-                                              color: Colors.white,
-                                              fontWeight: FontWeight.bold),
+                                        child: Row(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.center,
+                                          children: [
+                                            Text(
+                                              'Sign Up ',
+                                              style: TextStyle(
+                                                  color: Colors.white,
+                                                  fontWeight: FontWeight.bold),
+                                            ),
+                                            Icon(Icons.arrow_right_alt,
+                                                color: Colors.white),
+                                          ],
                                         ),
                                       ),
                                     ),
@@ -179,28 +183,19 @@ class LoginPage extends StatelessWidget {
                                     ),
                                   ),
                                 ))),
-                        Container(
-                            child: Icon(Icons.facebook,
-                                size: 50, color: Colors.lightBlue)),
-                        Container(
-                            child: Icon(Icons.email,
-                                size: 50, color: Colors.lightBlue)),
                       ],
                     )),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
-                    Text("Dont have an account? ",
+                    Text("Already have an account? ",
                         style:
                             TextStyle(color: Color.fromARGB(255, 11, 11, 11))),
                     InkWell(
                       onTap: () {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => SignupPage()));
+                        Navigator.pop(context);
                       },
-                      child: Text("Sign Up",
+                      child: Text("Sign In",
                           style: TextStyle(
                               color: Color.fromARGB(255, 252, 100, 133),
                               fontWeight: FontWeight.bold)),
